@@ -160,7 +160,7 @@ The resulting SSH command is: `ssh -N ${opts} ${forward} ${host}`
 |----------------|----------|--------------------------------------------------------------|
 | `proxy_binary` | No       | Path to `cloud-sql-proxy` (auto-detected from `PATH` if omitted) |
 
-> **Note:** the SQL proxy is launched bound to `--address 0.0.0.0` so containers (e.g. an MCP server) can reach it via `host.docker.internal`. On shared or untrusted networks, remember the local port is reachable from your LAN while a tunnel is up.
+> **Note:** the SQL proxy binds to `127.0.0.1`, so only this machine can reach it. Containers cannot reach it via `host.docker.internal`; switch `--address` in `lib/proxy-ctl.sh` back to `0.0.0.0` if one needs to.
 
 ## CLI
 

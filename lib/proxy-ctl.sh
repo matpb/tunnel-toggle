@@ -52,7 +52,7 @@ start_tunnel() {
 
     mkdir -p "${STATE_DIR}/sql"
 
-    nohup "$PROXY_BINARY" --address 0.0.0.0 --port "$port" "$instance" \
+    nohup "$PROXY_BINARY" --address 127.0.0.1 --port "$port" "$instance" \
         > "$lf" 2>&1 &
     local pid=$!
     echo "$pid" > "$pf"
